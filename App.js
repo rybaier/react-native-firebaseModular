@@ -20,7 +20,9 @@ export default function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
+
     console.log('CURRENTUSER', user)
+
     const usersRef = collection(db, 'users');
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -67,25 +69,3 @@ export default function App() {
   );
 }
 
-
-// Namespace SDK
-// useEffect(() => {
-//   const usersRef = firebase.firestore().collection('users');
-//   firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//       usersRef
-//         .doc(user.uid)
-//         .get()
-//         .then((document) => {
-//           const userData = document.data()
-//           setLoading(false)
-//           setUser(userData)
-//         })
-//         .catch((error) => {
-//           setLoading(false)
-//         });
-//     } else {
-//       setLoading(false)
-//     }
-//   });
-// }, []);
